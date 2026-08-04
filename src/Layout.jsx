@@ -1,9 +1,12 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
+import {Header} from "./components";
 
 const Layout = () => {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+    <div className="w-screen h-screen bg-[#282828] text-white">
+      <Header />
+      <Outlet />
     </div>
   );
 };
