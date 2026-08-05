@@ -1,4 +1,3 @@
-import React from 'react'
 import HomeIcon from '@mui/icons-material/Home';
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import YouTubeIcon from '@mui/icons-material/YouTube';

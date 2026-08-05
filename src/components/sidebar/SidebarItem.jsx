@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 const SidebarItem = ({Icon, title}) => {
     return(
         <div className="flex flex-col cursor-pointer hover:bg-[#0F0F0F] rounded-md px-2 items-center py-4">

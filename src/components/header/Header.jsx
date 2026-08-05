@@ -1,4 +1,4 @@
-import React from "react";
+ 
 import {  YOUTUBE_ICON_URL } from "../../utils/constants";
 import SearchIcon from '@mui/icons-material/Search';
 import PersonIcon from '@mui/icons-material/Person';

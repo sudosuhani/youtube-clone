@@ -1,14 +1,13 @@
-import React from 'react'
 import Sidebar from './sidebar/Sidebar'
 import MainContainer from './mainContainer/MainContainer'
 
 const Home = () => {
   return (
-    <div className='flex'>
-      <div className='flex px-1 '>
+    <div className='flex w-screen'>
+      <div className='px-1 h-screen '>
         <Sidebar />
       </div>
-      <div className='flex  px-4'>
+      <div className='px-4'>
         <MainContainer />
       </div>
     </div>

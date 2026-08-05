@@ -1,8 +1,16 @@
-import React from 'react'
+import {Categories, VideoContainer} from '../index';
 
 const MainContainer = () => {
   return (
-    <div>MainContainer</div>
+    <div className='flex flex-col'>
+        <div className='flex'>
+            <Categories />
+        </div>
+        <div>
+            <VideoContainer />
+        </div>
+
+    </div>
   )
 }
 

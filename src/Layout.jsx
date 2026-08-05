@@ -4,7 +4,7 @@ import {Header} from "./components";
 
 const Layout = () => {
   return (
-    <div className="w-screen h-screen bg-[#282828] text-white">
+    <div className="w-screen h-screen overflow-hidden bg-[#282828] text-white">
       <Header />
       <Outlet />
     </div>
