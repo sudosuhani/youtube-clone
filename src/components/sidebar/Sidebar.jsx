@@ -6,7 +6,7 @@ import SidebarItem from './SidebarItem';
 
 const Sidebar = () => {
   return (
-    <div>
+    <div className='mt-11'>
         <SidebarItem Icon={HomeIcon} title={'Home'} />
         <SidebarItem Icon={YouTubeIcon} title={'Shorts'} />
         <SidebarItem Icon={SubscriptionsIcon} title={'Subscriptions'} />

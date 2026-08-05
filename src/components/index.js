@@ -7,8 +7,12 @@ import VideoCard from "./mainContainer/videoContainer/VideoCard";
 import VideoContainer from "./mainContainer/videoContainer/VideoContainer";
 import Sidebar from "./sidebar/Sidebar";
 import SidebarItem from "./sidebar/SidebarItem";
+import SkeletonCard from "./skeleton/SkeletonCard";
+import SkeletonContainer from "./skeleton/SkeletonContainer";
 
 export {
+    SkeletonContainer,
+    SkeletonCard,
     VideoCard,
     VideoContainer,
     Category,
