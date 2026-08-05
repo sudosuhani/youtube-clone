@@ -6,7 +6,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 const Header = () => {
   return (
-    <div className="bg-[#282828] px-6 flex fixed top-0 w-screen items-center justify-between">
+    <div className="bg-[#282828] px-6 flex z-10 fixed top-0 w-screen items-center h-12 justify-between">
       <div className="flex items-center">
         <MenuIcon className="cursor-pointer" />
         <img

@@ -7,7 +7,7 @@ const Home = () => {
       <div className='px-1 h-full'>
         <Sidebar />
       </div>
-      <div className='px-4 w-full overflow-y-scroll no-scrollbar mt-12'>
+      <div className='px-4 w-full mt-12'>
         <MainContainer />
       </div>
     </div>

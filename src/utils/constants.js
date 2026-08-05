@@ -4,6 +4,12 @@ export const YOUTUBE_ICON_URL =
 
   export const categoryList = ['All', 'Music', 'Comedy Nights with Kapil', 'Podcasts', 'Sitcoms', 'Trailers', 'Thrillers', 'Gaming', 'Satire', 'Comedy Clubs', 'Roasts']
 
-  export const YOUTUBE_VIDEO_API =  (apiKey) => {
-      return `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=IN&key=${apiKey}&maxResults=20`
+  export const YOUTUBE_VIDEO_API =  (apiKey, nextPageToken) => {
+      if(nextPageToken.length > 0){
+        return `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=IN&key=${apiKey}&maxResults=12&pageToken=${nextPageToken}`
+      }else{
+        return `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=IN&key=${apiKey}&maxResults=12`
+      }
   }
+
+  
