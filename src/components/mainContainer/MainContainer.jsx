@@ -6,7 +6,7 @@ const MainContainer = () => {
         <div className='flex'>
             <Categories />
         </div>
-        <div>
+        <div className='m-auto'>
             <VideoContainer />
         </div>
 
