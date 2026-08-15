@@ -6,7 +6,7 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<Layout />}>
             <Route path="/" element={<Home />} />
-            <Route path="/watch" element={<VideoDetails />} />
+            <Route path="watch/:id" element={<VideoDetails />} />
         </Route>
     )
 )

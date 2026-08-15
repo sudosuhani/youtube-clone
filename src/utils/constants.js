@@ -12,4 +12,10 @@ export const YOUTUBE_ICON_URL =
       }
   }
 
-  
+  export const getYoutubeUrl = (id) => {
+    return `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1`
+}
+
+export const VIDEO_DETAIL_API = (id) => {
+  return `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${id}&key=${import.meta.env.VITE_GOOGLE_API_KEY}`
+}

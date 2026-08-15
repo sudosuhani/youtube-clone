@@ -3,17 +3,20 @@ import {  YOUTUBE_ICON_URL } from "../../utils/constants";
 import SearchIcon from '@mui/icons-material/Search';
 import PersonIcon from '@mui/icons-material/Person';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <div className="bg-[#282828] px-6 flex z-10 fixed top-0 w-screen items-center h-12 justify-between">
       <div className="flex items-center">
         <MenuIcon className="cursor-pointer" />
-        <img
-          className="h-12 cursor-pointer ml-4"
-          alt="logo"
-          src={YOUTUBE_ICON_URL}
-        />
+        <Link to={'/'}>
+          <img
+            className="h-12 cursor-pointer ml-4"
+            alt="logo"
+            src={YOUTUBE_ICON_URL}
+            />
+        </Link>
       </div>
       <div className="flex items-center w-[50%] px-4">
         <input
