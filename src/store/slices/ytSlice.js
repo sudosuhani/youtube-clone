@@ -4,6 +4,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     isSidebarOpen:true,
     popularVideo:[],
+    recommendedVideo:[],
+    nextSetRecommendId: "",
     nextSetId:""
 }
 
@@ -21,14 +23,23 @@ const ytSlice = createSlice({
     },
     setIsSidebarOpen: (state, action) => {
       state.isSidebarOpen = action.payload;
-    }
+    },
+    setRecommendedVideo: (state, action) => {
+      state.recommendedVideo = action.payload;
+    },
+    setNextSetRecommendId: (state, action) => {
+      state.nextSetRecommendId = action.payload;
+    },
   },
+
 });
 
 export const {
     setPopularVideo,
     setNextSetId,
-    setIsSidebarOpen
+    setIsSidebarOpen,
+    setNextSetRecommendId,
+    setRecommendedVideo
 } = ytSlice.actions;
 
 export default ytSlice.reducer;

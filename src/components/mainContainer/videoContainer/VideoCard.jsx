@@ -7,8 +7,6 @@ const VideoCard = ({video}) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-  console.log(video)
-
     navigate(`/watch/${video?.id}`);
   }
   return (

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import getPopularVideos from "../../../utils/helperFunctions/getPopularVideos";
 import { VideoCard, SkeletonContainer } from "../../";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -24,8 +24,6 @@ const VideoContainer = () => {
 
   const fetchVideos = async () => {
     const response = await getPopularVideos();
-    console.log(response)
-
     dispatch(setPopularVideo(response?.items));
     dispatch(setNextSetId(response?.nextPageToken));
   };

@@ -9,9 +9,10 @@ import Sidebar from "./sidebar/Sidebar";
 import SidebarItem from "./sidebar/SidebarItem";
 import SkeletonCard from "./skeleton/SkeletonCard";
 import SkeletonContainer from "./skeleton/SkeletonContainer";
+import VideoCardHorizontal from "./videoDetails/VideoCardHorizontal";
 import VideoDetails from "./videoDetails/VideoDetails";
-
 export {
+    VideoCardHorizontal,
     VideoDetails,
     SkeletonContainer,
     SkeletonCard,
