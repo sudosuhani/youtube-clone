@@ -4,8 +4,18 @@ import SearchIcon from '@mui/icons-material/Search';
 import PersonIcon from '@mui/icons-material/Person';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import getAutoSuggestion from "../../utils/helperFunctions/getAutoSuggestion";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const dispatch = useDispatch();
+  const handleInputChange = (e) => {
+    console.log(e.target.value)
+    setSearchQuery(e.target.value);
+    getAutoSuggestion(e.target.value, dispatch);
+  }
   return (
     <div className="bg-[#282828] px-6 flex z-10 fixed top-0 w-screen items-center h-12 justify-between">
       <div className="flex items-center">
@@ -23,6 +33,8 @@ const Header = () => {
           className="h-8 w-full bg-[#282828] text-white px-4 outline-none border border-gray-400 rounded-l-full"
           type="text"
           placeholder="Search"
+          value={searchQuery}
+          onChange={handleInputChange}
         />
         <button className="rounded-r-full h-8 text-white border border-gray-400 px-4 bg-[#222222]">
           <SearchIcon />
