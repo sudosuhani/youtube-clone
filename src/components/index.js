@@ -1,3 +1,4 @@
+import AutoSuggestion from "./header/AutoSuggestion";
 import Header from "./header/Header";
 import Home from "./Home";
 import Categories from "./mainContainer/categories/Categories";
@@ -11,7 +12,9 @@ import SkeletonCard from "./skeleton/SkeletonCard";
 import SkeletonContainer from "./skeleton/SkeletonContainer";
 import VideoCardHorizontal from "./videoDetails/VideoCardHorizontal";
 import VideoDetails from "./videoDetails/VideoDetails";
+
 export {
+    AutoSuggestion,
     VideoCardHorizontal,
     VideoDetails,
     SkeletonContainer,

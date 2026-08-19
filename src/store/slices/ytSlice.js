@@ -48,7 +48,8 @@ export const {
     setIsSidebarOpen,
     setNextSetRecommendId,
     setRecommendedVideo,
-    setAutoSuggestionResultRecord
+    setAutoSuggestionResultRecord,
+    setAutoSuggestionData
 } = ytSlice.actions;
 
 export default ytSlice.reducer;

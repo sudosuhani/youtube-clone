@@ -1,6 +1,6 @@
 import axios from "axios";
 import jsonpAdapter from "axios-jsonp";
-import { setAutoSuggestionResultRecord } from "../../store/slices/ytSlice";
+import { setAutoSuggestionData, setAutoSuggestionResultRecord } from "../../store/slices/ytSlice";
 
 const getAutoSuggestion = async (query, dispatch) => {
     try {
@@ -11,14 +11,16 @@ const getAutoSuggestion = async (query, dispatch) => {
           adapter: jsonpAdapter,
         });
 
-        console.log('response >>', response)
     
         if (response.status !== 200) {
           throw new Error("Suggest API not 200!");
         }
+        const res = response.data[1];
+        console.log('response >>', res)
 
-        dispatch(setAutoSuggestionResultRecord({[query]: response.data[1]}))
-        return response.data[1];
+        dispatch(setAutoSuggestionResultRecord({[query]: res}))
+        dispatch(setAutoSuggestionData(res))
+        return res;
     
       } catch (error) {
         console.error("Error fetching suggestions:", error);
