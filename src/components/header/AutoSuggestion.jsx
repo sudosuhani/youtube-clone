@@ -4,7 +4,7 @@ import SearchIcon from "@mui/icons-material/Search";
 
 const AutoSuggestion = () => {
   const autoSuggestionData = useSelector(
-    (state) => state.youtube.autoSuggestionData
+    (state) => state.search.autoSuggestionData
   );
 
   if (autoSuggestionData.length === 0) return;

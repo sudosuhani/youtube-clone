@@ -32,7 +32,6 @@ const VideoDetails = () => {
 
   const fetchRecommendedVideo = async () => {
     const response = await getPopularVideos();
-
     dispatch(setRecommendedVideo(response?.items));
     dispatch(setNextSetRecommendId(response?.nextPageToken));
   }

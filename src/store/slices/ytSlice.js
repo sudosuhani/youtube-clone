@@ -7,8 +7,6 @@ const initialState = {
     recommendedVideo:[],
     nextSetRecommendId: "",
     nextSetId:"",
-    autoSuggestionResultRecord:{},
-    autoSuggestionData:[],
 }
 
 
@@ -31,12 +29,6 @@ const ytSlice = createSlice({
     },
     setNextSetRecommendId: (state, action) => {
       state.nextSetRecommendId = action.payload;
-    },
-    setAutoSuggestionResultRecord: (state, action) => {
-      state.autoSuggestionResultRecord = {...state.autoSuggestionResultRecord, ...action.payload}
-    },
-    setAutoSuggestionData: (state, action) => {
-      state.autoSuggestionData = [...action.payload]
     }
   },
 
@@ -47,9 +39,7 @@ export const {
     setNextSetId,
     setIsSidebarOpen,
     setNextSetRecommendId,
-    setRecommendedVideo,
-    setAutoSuggestionResultRecord,
-    setAutoSuggestionData
+    setRecommendedVideo
 } = ytSlice.actions;
 
 export default ytSlice.reducer;

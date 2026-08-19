@@ -7,13 +7,13 @@ import { useState } from "react";
 import getAutoSuggestion from "../../utils/helperFunctions/getAutoSuggestion";
 import { useDispatch, useSelector } from "react-redux";
 import { AutoSuggestion } from "../index";
-import { setAutoSuggestionData } from "../../store/slices/ytSlice";
+import { setAutoSuggestionData } from "../../store/slices/searchSlice";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
   const dispatch = useDispatch();
-  const autoSuggestionResultRecord = useSelector((state) => state.youtube.autoSuggestionResultRecord);
+  const autoSuggestionResultRecord = useSelector((state) => state.search.autoSuggestionResultRecord);
   const handleInputChange = (e) => {
     
     if(e.target.value.length > 0){

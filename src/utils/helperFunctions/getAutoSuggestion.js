@@ -1,6 +1,6 @@
 import axios from "axios";
 import jsonpAdapter from "axios-jsonp";
-import { setAutoSuggestionData, setAutoSuggestionResultRecord } from "../../store/slices/ytSlice";
+import { setAutoSuggestionData, setAutoSuggestionResultRecord } from "../../store/slices/searchSlice";
 
 const getAutoSuggestion = async (query, dispatch) => {
     try {
