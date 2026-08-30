@@ -3,7 +3,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import getAutoSuggestion from "../../utils/helperFunctions/getAutoSuggestion";
 import { useDispatch, useSelector } from "react-redux";
 import { AutoSuggestion } from "../index";
@@ -14,8 +14,22 @@ const Header = () => {
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
   const dispatch = useDispatch();
   const autoSuggestionResultRecord = useSelector((state) => state.search.autoSuggestionResultRecord);
-  const handleInputChange = (e) => {
+
+  useEffect(() => {
+    let timer;
+    if(autoSuggestionResultRecord[searchQuery]){
+      dispatch(setAutoSuggestionData(autoSuggestionResultRecord[searchQuery]))
+    }else{
+      timer = setTimeout(() =>  getAutoSuggestion(searchQuery, dispatch), 400);
+    }
     
+    return () => {
+      clearTimeout(timer);
+    }
+  }, [searchQuery])
+
+
+  const handleInputChange = (e) => {
     if(e.target.value.length > 0){
       setIsSearchBarOpen(true);
     }else{
@@ -23,11 +37,6 @@ const Header = () => {
     }
 
     setSearchQuery(e.target.value);
-    if(autoSuggestionResultRecord[e.target.value]){
-      dispatch(setAutoSuggestionData(autoSuggestionResultRecord[e.target.value]))
-    }else{
-      getAutoSuggestion(e.target.value, dispatch);
-    }
   };
 
   return (

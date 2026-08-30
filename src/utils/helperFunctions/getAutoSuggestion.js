@@ -16,7 +16,6 @@ const getAutoSuggestion = async (query, dispatch) => {
           throw new Error("Suggest API not 200!");
         }
         const res = response.data[1];
-        console.log('response >>', res)
 
         dispatch(setAutoSuggestionResultRecord({[query]: res}))
         dispatch(setAutoSuggestionData(res))
