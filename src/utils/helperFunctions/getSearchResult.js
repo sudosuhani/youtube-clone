@@ -1,14 +1,18 @@
 import axios from "axios";
+import { setPopularVideo } from "../../store/slices/ytSlice";
+import { setAutoSuggestionData } from "../../store/slices/searchSlice";
 
-const getSearchResult = async (query) => {
+const getSearchResult = async (query, dispatch) => {
 
     const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${query}&key=${import.meta.env.VITE_GOOGLE_API_KEY}`
 
     try{
-        const response = axios.get(url);
-        console.log('getSearchResult >>', response)
+        const response = await axios.get(url);
+        dispatch(setPopularVideo(response?.data?.items));
+        dispatch(setAutoSuggestionData([]));
     }catch(error){
         console.log('Error in getSearchResult: ', error)
+        return [];
     }
 }
 

@@ -15,7 +15,6 @@ const ytSlice = createSlice({
   initialState,
   reducers: {
     setPopularVideo: (state, action) => {
-       console.log('In setPopularVideo >>', action )
       state.popularVideo = [...action.payload];
     },
     setNextSetId: (state, action) => {
