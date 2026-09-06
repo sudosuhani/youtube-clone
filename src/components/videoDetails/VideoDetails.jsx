@@ -7,7 +7,9 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import getPopularVideos from "../../utils/helperFunctions/getPopularVideos";
 import { useDispatch, useSelector } from "react-redux";
 import { setNextSetRecommendId, setRecommendedVideo } from "../../store/slices/ytSlice";
-import  { SkeletonContainer, VideoCardHorizontal} from "../index";
+import  { CommentSection, SkeletonContainer, VideoCardHorizontal} from "../index";
+import getTopLevelComments from "../../utils/helperFunctions/getTopLevelComments";
+import { setNextSetTopLevelCommentId, setTopLevelComment } from "../../store/slices/commentSlice";
 
 const VideoDetails = () => {
   const params = useParams();
@@ -17,23 +19,32 @@ const VideoDetails = () => {
 
   const recommendedVideo = useSelector((state) => state.youtube.recommendedVideo);
   const nextSetRecommendId = useSelector((state) => state.youtube.nextSetRecommendId);
+  const topLevelComments = useSelector((state) => state.comment.topLevelComment);
+  const nextSetTopLevelCommentId = useSelector((state) => state.comment.nextSetTopLevelCommentId);
 
   useEffect(() => {
     fetchVideoDetails();
-    fetchRecommendedVideo();
+    fetchRecommendedVideo(nextSetRecommendId);
+    getTopLevelComments(params?.id);
+    fetchTopLevelComment(nextSetTopLevelCommentId);
   }, [params?.id]);
 
   const fetchMoreData = async () => {
+    fetchRecommendedVideo(nextSetRecommendId);
+    fetchTopLevelComment(nextSetTopLevelCommentId);
+  }
+
+
+  const fetchRecommendedVideo = async (nextSetRecommendId) => {
     const response = await getPopularVideos(nextSetRecommendId);
     dispatch(setRecommendedVideo([...recommendedVideo, ...response.items]));
     dispatch(setNextSetRecommendId(response?.nextPageToken));
   }
 
-
-  const fetchRecommendedVideo = async () => {
-    const response = await getPopularVideos();
-    dispatch(setRecommendedVideo(response?.items));
-    dispatch(setNextSetRecommendId(response?.nextPageToken));
+  const fetchTopLevelComment = async (nextSetTopLevelCommentId) => {
+    const commentResponse =  await getTopLevelComments(params?.id, nextSetTopLevelCommentId);
+    dispatch(setTopLevelComment([...topLevelComments, ...commentResponse.items]));
+    dispatch(setNextSetTopLevelCommentId(commentResponse?.nextPageToken))
   }
 
   const fetchVideoDetails = async () => {
@@ -89,12 +100,14 @@ const VideoDetails = () => {
                   isDescriptionOpen ? 
                   videoDetails?.description?.split("\n").map((line, index) => (
                     <p className={`${line === '' && 'pt-4'}`} key={index}>{line}</p>
-                  )) : videoDetails?.description?.split("\n").slice(0,4).map((line, index) => (
+                  )) : videoDetails?.description?.split("\n").slice(0,2).map((line, index) => (
                     <p className={`${line === '' && 'pt-4'}`} key={index}>{line}</p>
                   ))
                 }
                 <p onClick={() => SetIsDescriptionOpen((val) => !val)} className="mt-3 font-bold text-sm cursor-pointer">Show {`${isDescriptionOpen ? ' less' : ' more'}`}</p>
+                
               </div>
+              <CommentSection  topLevelComments={topLevelComments}/>
             </div>
           </div>
 

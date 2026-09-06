@@ -29,6 +29,7 @@ const Header = () => {
   }, [searchQuery])
 
 
+
   const handleInputChange = (e) => {
     if(e.target.value.length > 0){
       setIsSearchBarOpen(true);

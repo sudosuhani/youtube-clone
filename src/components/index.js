@@ -10,10 +10,14 @@ import Sidebar from "./sidebar/Sidebar";
 import SidebarItem from "./sidebar/SidebarItem";
 import SkeletonCard from "./skeleton/SkeletonCard";
 import SkeletonContainer from "./skeleton/SkeletonContainer";
+import Comment from "./videoDetails/Comment";
+import CommentSection from "./videoDetails/CommentSection";
 import VideoCardHorizontal from "./videoDetails/VideoCardHorizontal";
 import VideoDetails from "./videoDetails/VideoDetails";
 
 export {
+    Comment,
+    CommentSection,
     AutoSuggestion,
     VideoCardHorizontal,
     VideoDetails,

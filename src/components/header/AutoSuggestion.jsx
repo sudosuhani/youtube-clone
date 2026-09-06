@@ -11,7 +11,7 @@ const AutoSuggestion = () => {
 
   const dispatch = useDispatch();
 
-  const searchForQuery = (query) => {
+  const searchForQuery = ( query) => {
     getSearchResult(query, dispatch);
     window.scrollTo({
       top: 0,

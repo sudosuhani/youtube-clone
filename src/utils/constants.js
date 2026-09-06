@@ -12,6 +12,14 @@ export const YOUTUBE_ICON_URL =
       }
   }
 
+  export const YOUTUBE_TOP_LEVEL_COMMENT_API =  (apiKey, nextPageToken, videoId) => {
+    if(nextPageToken && nextPageToken.length > 0){
+      return `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&maxResults=20&key=${apiKey}&pageToken=${nextPageToken}`
+    }else{
+      return `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&maxResults=20&key=${apiKey}`
+    }
+}
+
   export const getYoutubeUrl = (id) => {
     return `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1`
 }
