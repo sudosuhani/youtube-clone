@@ -59,7 +59,7 @@ const VideoDetails = () => {
   }
 
   return (
-    <div className="mt-12 p-6">
+    <div className="mt-12 sm:p-6">
       <InfiniteScroll
         dataLength={recommendedVideo.length}
         next={fetchMoreData}
@@ -100,8 +100,8 @@ const VideoDetails = () => {
                   isDescriptionOpen ? 
                   videoDetails?.description?.split("\n").map((line, index) => (
                     <p className={`${line === '' && 'pt-4'}`} key={index}>{line}</p>
-                  )) : videoDetails?.description?.split("\n").slice(0,2).map((line, index) => (
-                    <p className={`${line === '' && 'pt-4'}`} key={index}>{line}</p>
+                  )) : videoDetails?.description?.split("\n").slice(0,1).map((line, index) => (
+                    <p className={`${line === '' && 'pt-4'} line-clamp-1`} key={index}>{line}</p>
                   ))
                 }
                 <p onClick={() => SetIsDescriptionOpen((val) => !val)} className="mt-3 font-bold text-sm cursor-pointer">Show {`${isDescriptionOpen ? ' less' : ' more'}`}</p>
