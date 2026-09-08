@@ -3,11 +3,11 @@ import {MainContainer } from './index'
 
 const Home = () => {
   return (
-    <div className='flex overflow-x-hidden h-full'>
-      <div className='px-1 h-full'>
+    <div className='flex h-full'>
+      <div className='hidden md:block px-1 h-full'>
         <Sidebar />
       </div>
-      <div className='px-4 w-full mt-12'>
+      <div className='px-4 w-full md:w-[90%] mt-12'>
         <MainContainer />
       </div>
     </div>

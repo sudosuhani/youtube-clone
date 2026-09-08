@@ -43,7 +43,9 @@ const Header = () => {
   return (
     <div className="bg-[#282828] px-6 flex z-10 fixed top-0 w-screen items-center h-12 justify-between">
       <div className="flex items-center">
-        <MenuIcon className="cursor-pointer" />
+        <div className="hidden md:block">
+          <MenuIcon className="cursor-pointer" />
+        </div>
         <Link to={"/"}>
           <img
             className="h-12 cursor-pointer ml-4"
@@ -52,7 +54,7 @@ const Header = () => {
           />
         </Link>
       </div>
-      <div className="flex items-center w-[50%] px-4">
+      <div className="flex items-center w-[90%] md:w-[50%] px-4">
         <div className="relative w-full">
           <input
             className="h-8 w-full bg-[#282828] text-white px-4 outline-none border border-gray-400 rounded-l-full"
@@ -69,7 +71,7 @@ const Header = () => {
           <SearchIcon />
         </button>
       </div>
-      <div className="cursor-pointer">
+      <div className="hidden md:block cursor-pointer">
         <PersonIcon />
       </div>
     </div>
