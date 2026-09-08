@@ -67,10 +67,10 @@ const VideoDetails = () => {
         height={"calc(100vh - 96px)"}
         className="no-scrollbar"
       >
-        <div className="flex">
-          <div className="w-[60vw]">
+        <div className="lg:flex">
+          <div className="lg:w-[60vw]">
             <iframe
-              className="h-[65vh] w-full rounded-xl"
+              className="h-[40vh] sm:h-[65vh] w-full rounded-xl"
               src={getYoutubeUrl(params?.id)}
               referrerPolicy="strict-origin-when-cross-origin"
               title="YouTube video player"
@@ -107,11 +107,13 @@ const VideoDetails = () => {
                 <p onClick={() => SetIsDescriptionOpen((val) => !val)} className="mt-3 font-bold text-sm cursor-pointer">Show {`${isDescriptionOpen ? ' less' : ' more'}`}</p>
                 
               </div>
-              <CommentSection  topLevelComments={topLevelComments}/>
+              <div className="hidden lg:block">
+                <CommentSection  topLevelComments={topLevelComments}/>
+              </div>
             </div>
           </div>
 
-          <div className="w-[40vw] pl-6">
+          <div className="lg:w-[40vw] pl-6">
             {recommendedVideo?.map((video, index) => {
               return <VideoCardHorizontal key={video?.id + index} video={video} />;
             })}
