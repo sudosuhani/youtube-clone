@@ -2,6 +2,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import SearchIcon from "@mui/icons-material/Search";
 import getSearchResult from "../../utils/helperFunctions/getSearchResult"
+import { setSearchQuery } from "../../store/slices/searchSlice";
 
 const AutoSuggestion = () => {
   
@@ -10,16 +11,18 @@ const AutoSuggestion = () => {
   );
 
   const dispatch = useDispatch();
-
+  const isShowAutoSuggestion = useSelector((state) => state.search.isShowAutoSuggestion);
   const searchForQuery = ( query) => {
     getSearchResult(query, dispatch);
+    dispatch(setSearchQuery(query));
+
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
   });
   }
 
-  if (autoSuggestionData.length === 0) return;
+  if (autoSuggestionData.length === 0 || !isShowAutoSuggestion) return;
 
 
   return (

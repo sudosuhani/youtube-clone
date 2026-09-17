@@ -7,13 +7,14 @@ import { useState, useEffect } from "react";
 import getAutoSuggestion from "../../utils/helperFunctions/getAutoSuggestion";
 import { useDispatch, useSelector } from "react-redux";
 import { AutoSuggestion } from "../index";
-import { setAutoSuggestionData } from "../../store/slices/searchSlice";
+import { setAutoSuggestionData, setIsShowAutoSuggestion, setSearchQuery } from "../../store/slices/searchSlice";
+import getSearchResult from "../../utils/helperFunctions/getSearchResult";
 
 const Header = () => {
-  const [searchQuery, setSearchQuery] = useState("");
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
   const dispatch = useDispatch();
   const autoSuggestionResultRecord = useSelector((state) => state.search.autoSuggestionResultRecord);
+  const searchQuery = useSelector((state) => state.search.searchQuery);
 
   useEffect(() => {
     let timer;
@@ -33,12 +34,27 @@ const Header = () => {
   const handleInputChange = (e) => {
     if(e.target.value.length > 0){
       setIsSearchBarOpen(true);
+      dispatch(setIsShowAutoSuggestion(true));
     }else{
       setIsSearchBarOpen(false);
     }
 
-    setSearchQuery(e.target.value);
+    dispatch(setSearchQuery(e.target.value));
   };
+
+  const searchForQuery = () => {
+    getSearchResult(searchQuery, dispatch);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+  });
+  }
+
+  const searchOnEnter = (e) => {
+    if (e.key === "Enter") {
+      searchForQuery();
+    }
+  }
 
   return (
     <div className="bg-[#282828] px-6 flex z-10 fixed top-0 w-screen items-center h-12 justify-between">
@@ -62,12 +78,13 @@ const Header = () => {
             placeholder="Search"
             value={searchQuery}
             onChange={handleInputChange}
+            onKeyDown={(e) => searchOnEnter(e)}
           />
-          <div className={`${isSearchBarOpen ? 'absolute' : 'none'} w-full`}>
+          <div className={`${(isSearchBarOpen) ? 'absolute' : 'none'} w-full`}>
               <AutoSuggestion />
           </div>
         </div>
-        <button className="rounded-r-full h-8 text-white border border-gray-400 px-4 bg-[#222222]">
+        <button onClick={searchForQuery} className="rounded-r-full h-8 text-white border border-gray-400 px-4 bg-[#222222]">
           <SearchIcon />
         </button>
       </div>

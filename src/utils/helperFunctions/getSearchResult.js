@@ -1,6 +1,6 @@
 import axios from "axios";
 import { setPopularVideo } from "../../store/slices/ytSlice";
-import { setAutoSuggestionData } from "../../store/slices/searchSlice";
+import { setAutoSuggestionData, setIsShowAutoSuggestion } from "../../store/slices/searchSlice";
 
 const getSearchResult = async (query, dispatch) => {
 
@@ -10,6 +10,8 @@ const getSearchResult = async (query, dispatch) => {
         const response = await axios.get(url);
         dispatch(setPopularVideo(response?.data?.items));
         dispatch(setAutoSuggestionData([]));
+        dispatch(setIsShowAutoSuggestion(false));
+
     }catch(error){
         console.log('Error in getSearchResult: ', error)
         return [];
